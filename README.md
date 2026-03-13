@@ -106,4 +106,6 @@ This implementation uses the same divide-and-conquer structure as merge sort. Th
 
 The merge step is where the main idea appears. If the next value to place comes from the right half before the current value from the left half, then that right-half value is smaller than not just one left value, but every remaining value in the left half. So instead of counting those inversions one at a time, the algorithm adds all of them in a single step. That is what makes the method much faster than the brute-force `O(n^2)` approach.
 
+In the JavaScript version, `slice()` is used to create the smaller recursive halves, and `concat()` is used when the merge step finishes building the combined sorted array. The function also returns an object with both the sorted result and the inversion count, which keeps the recursive return values organized while the algorithm combines the left, right, and cross-half counts.
+
 Because each recursive level performs linear merge work and there are `log n` levels, the total runtime is `O(n log n)`. The implementation also uses `O(n)` extra space for the merged arrays that are created while the recursion combines results.
